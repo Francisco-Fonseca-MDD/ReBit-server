@@ -1,30 +1,70 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
 const app = express();
+const port = process.env.PORT || 8080;
+const knex = require("knex")(require("./knexfile"));
 
 app.use(express.json());
 app.use(cors());
 
-async function getReviews(id, res, cursor) {
+app.get("/games", async (_req, res) => {
   try {
-    const { data } = await axios.get(
-      `http://store.steampowered.com/appreviews/${id}?json=1&filter=recent`
-    );
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(400).json({ message: error });
-  }
-}
+    const gameTagPairs = await knex("games")
+      .select(
+        "games.id",
+        "games.game",
+        "games.short_description",
+        "games.detailed_description",
+        "games.about",
+        "games.release_date",
+        "games.latest_update"
+      )
+      .leftJoin("Tags", "games.id", "Tags.game_id")
+      .join("tag-list", "tag-list.id", "tags.tag_id")
+      .select("tag-list.tag");
 
-app.get("/:id", (req, res) => {
-  const id = req.params.id;
-  const cursor = req.body.cursor;
-  getReviews(id, res);
+    const gameMap = new Map();
+
+    gameTagPairs.forEach((pair) => {
+      if (gameMap.has(pair.id)) {
+        if (pair.tag) {
+          gameMap.get(pair.id).tags.push(pair.tag);
+        }
+      } else {
+        const newGame = {
+          id: pair.id,
+          game: pair.game,
+          short_description: pair.short_description,
+          detailed_description: pair.detailed_description,
+          about: pair.about,
+          release_date: pair.release_date,
+          latest_update: pair.latest_update,
+          tags: pair.tag ? [pair.tag] : [],
+        };
+        gameMap.set(pair.id, newGame);
+      }
+    });
+
+    const games = Array.from(gameMap.values()).sort((a, b) => {
+      return a.id - b.id;
+    });
+
+    res.json(games);
+  } catch (error) {
+    res.status(400).send(`Error retrieving games: ${error}`);
+  }
 });
 
+app.get("/games/:id", async (req, res) => {});
+
+app
+  .route("/reviews/:id")
+  .post(async (req, res) => {})
+  .put(async (req, res) => {})
+  .delete(async (req, res) => {});
+
 app.listen(
-  process.env.PORT,
+  port,
   console.log(`Server has been started with port:${process.env.PORT}`)
 );

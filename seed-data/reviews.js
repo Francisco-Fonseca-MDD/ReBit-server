@@ -41,7 +41,6 @@ module.exports = [
     user_id: 5,
     score: 8,
   },
-  // ... (add more reviews for other games as needed)
   // Reviews for "Red Dead Redemption 2" (Game ID: 2)
   {
     id: 6,
@@ -159,7 +158,6 @@ module.exports = [
     user_id: 19,
     score: 8,
   },
-  // ... (continue with reviews for other games as needed)
   // Reviews for "Fortnite" (Game ID: 6)
   {
     id: 20,
