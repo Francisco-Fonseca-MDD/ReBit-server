@@ -1,66 +1,92 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.up = function (knex) {
   return knex.schema
-    .createTable("Likes-Dislikes", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.integer("review_id").unsigned().notNullable();
-      table.integer("user_id").unsigned().notNullable();
-      table.integer("like_dislike", 1).notNullable();
-      table.foreign("review_id").references("id").inTable("Reviews");
-      table.foreign("user_id").references("id").inTable("Users");
-    })
     .createTable("Games", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.char("game", 255).notNullable();
-      table.text("short_description").notNullable();
-      table.text("detailed_description").notNullable();
-      table.text("about").notNullable();
+      table.increments("id").unsigned().primary();
+      table.string("game", 255).notNullable();
+      table.string("short_description").notNullable();
+      table.string("detailed_description").notNullable();
+      table.string("about").notNullable();
       table.double("price", 8, 2).notNullable();
       table.date("release_date").notNullable();
-      table.datetime("latest_update").notNullable();
-    })
-    .createTable("Tags", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.integer("game_id").unsigned().notNullable();
-      table.integer("tag_id").unsigned().notNullable();
-      table.foreign("game_id").references("id").inTable("Games");
-      table.foreign("tag_id").references("id").inTable("Tag-List");
-    })
-    .createTable("Users", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.char("username", 255).notNullable();
-      table.varchar("password", 255).notNullable();
-    })
-    .createTable("Reviews", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.text("review").notNullable();
-      table.integer("game_id").unsigned().notNullable();
-      table.integer("user_id").unsigned().notNullable();
-      table.integer("score").notNullable();
-      table.foreign("game_id").references("id").inTable("Games");
-      table.foreign("user_id").references("id").inTable("Users");
+      table.date("latest_update").notNullable();
     })
     .createTable("Tag-List", function (table) {
-      table.increments("id").unsigned().notNullable().primary();
-      table.char("tag", 255).notNullable();
+      table.increments("id").unsigned().primary();
+      table.string("tag", 255).notNullable();
+    })
+    .createTable("Users", function (table) {
+      table.increments("id").unsigned().primary();
+      table.string("username", 255).notNullable();
+      table.string("password", 255).notNullable();
+    })
+    .createTable("Reviews", function (table) {
+      table.increments("id").unsigned().primary();
+      table.string("review").notNullable();
+      table
+        .integer("game_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Games")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      table
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      table.integer("score").notNullable();
+    })
+    .createTable("Tags", function (table) {
+      table.increments("id").unsigned().primary();
+      table
+        .integer("game_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Games")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      table
+        .integer("tag_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Tag-List")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    })
+    .createTable("Likes-Dislikes", function (table) {
+      table.increments("id").unsigned().primary();
+      table
+        .integer("review_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Reviews")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      table
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("Users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      table.boolean("like_dislike").notNullable();
     });
 };
 
 exports.down = function (knex) {
   return knex.schema
     .dropTableIfExists("Likes-Dislikes")
-    .dropTableIfExists("Games")
     .dropTableIfExists("Tags")
-    .dropTableIfExists("Users")
     .dropTableIfExists("Reviews")
-    .dropTableIfExists("Tag-List");
+    .dropTableIfExists("Users")
+    .dropTableIfExists("Tag-List")
+    .dropTableIfExists("Games");
 };
-
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.down = function (knex) {};
