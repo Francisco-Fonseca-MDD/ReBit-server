@@ -76,9 +76,28 @@ app.get("/games/:id", async (req, res) => {
       .join("tag-list", "tag-list.id", "tags.tag_id");
 
     const reviews = await knex("reviews")
-      .select("id", "review", "score", "user_id")
+      .select(
+        "reviews.id",
+        "reviews.review",
+        "reviews.score",
+        "reviews.user_id"
+      )
       .where({ game_id: req.params.id });
 
+    const newReviews = await Promise.all(
+      reviews.map(async (review) => {
+        const reviewLikes = await knex("likes-dislikes").where({
+          review_id: review.id,
+        });
+        let likes = 0;
+        let dislikes = 0;
+        reviewLikes.forEach((user) => {
+          if (user.like_dislike) likes++;
+          if (user.like_dislike) dislikes++;
+        });
+        return { ...review, likes: likes, dislikes: dislikes };
+      })
+    );
     const gameMap = new Map();
 
     gameTagPairs.forEach((pair) => {
@@ -101,11 +120,11 @@ app.get("/games/:id", async (req, res) => {
         gameMap.set(pair.id, newGame);
       }
     });
-    const game = { ...gameMap.get(gameId), reviews: reviews };
+    const game = { ...gameMap.get(gameId), reviews: newReviews };
 
     res.json(game);
   } catch (error) {
-    res.status(400).send(`Error retrieving games: ${error}`);
+    res.status(400).send(`Error retrieving game: ${error}`);
   }
 });
 
@@ -125,10 +144,31 @@ app
     };
     await knex("reviews").insert(newReview);
     utils.updateGamesScores();
-    res.json("added");
+    res.json(newReview);
   })
-  .put(async (req, res) => {})
-  .delete(async (req, res) => {});
+  .put(async (req, res) => {
+    const { userId, reviewId, like } = req.body;
+    const update = await knex("likes-dislikes")
+      .where({ review_id: reviewId })
+      .andWhere({ user_id: userId })
+      .update({ like_dislike: like });
+    if (update == 0) {
+      const newInteraction = {
+        review_id: reviewId,
+        user_id: userId,
+        like_dislike: like,
+      };
+      await knex("likes-dislikes").insert(newInteraction);
+      res.status(201).json({ created: newInteraction });
+      return;
+    }
+
+    res.status(200).json({ updated: { ...req.body } });
+  })
+  .delete(async (req, res) => {
+    await knex("reviews").where({ id: req.body.id }).delete();
+    res.sendStatus(204);
+  });
 
 app.listen(
   port,
