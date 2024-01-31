@@ -9,6 +9,7 @@ exports.up = function (knex) {
       table.double("price", 8, 2).notNullable();
       table.date("release_date").notNullable();
       table.date("latest_update").notNullable();
+      table.integer("score");
     })
     .createTable("Tag-List", function (table) {
       table.increments("id").unsigned().primary();
