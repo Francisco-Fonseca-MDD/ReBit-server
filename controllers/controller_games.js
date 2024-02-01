@@ -12,6 +12,7 @@ const allGames = async (_req, res) => {
         "games.release_date",
         "games.latest_update",
         "games.score",
+        "games.header_url",
         "tag-list.tag"
       )
       .leftJoin("Tags", "games.id", "Tags.game_id")
@@ -33,6 +34,7 @@ const allGames = async (_req, res) => {
           release_date: pair.release_date,
           latest_update: pair.latest_update,
           score: pair.score,
+          header_url: pair.header_url,
           tags: pair.tag ? [pair.tag] : [],
         };
         gameMap.set(pair.id, newGame);
@@ -62,6 +64,7 @@ const oneGame = async (req, res) => {
         "games.release_date",
         "games.latest_update",
         "games.score",
+        "games.header_url",
         "tag-list.tag"
       )
       .where({ "games.id": gameId })
@@ -108,6 +111,7 @@ const oneGame = async (req, res) => {
           release_date: pair.release_date,
           latest_update: pair.latest_update,
           score: pair.score,
+          header_url: pair.header_url,
           tags: pair.tag ? [pair.tag] : [],
         };
         gameMap.set(pair.id, newGame);

@@ -11,6 +11,7 @@ module.exports = [
     release_date: "2011-11-11",
     latest_update: "2022-05-19",
     score: 200,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/81281/header.jpg",
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ module.exports = [
     release_date: "2018-10-25",
     latest_update: "2023-02-15",
     score: -100,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/1174180/header.jpg",
   },
   {
     id: 3,
@@ -35,6 +37,7 @@ module.exports = [
     release_date: "2015-05-18",
     latest_update: "2022-08-09",
     score: 450,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/292030/header.jpg",
   },
   {
     id: 4,
@@ -47,6 +50,7 @@ module.exports = [
     release_date: "2014-11-11",
     latest_update: "2023-01-05",
     score: 200,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/976730/header.jpg",
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ module.exports = [
     release_date: "2011-11-18",
     latest_update: "2022-12-30",
     score: 333,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/376870/header.jpg",
   },
   {
     id: 6,
@@ -70,6 +75,8 @@ module.exports = [
     release_date: "2017-07-24",
     latest_update: "2024-01-20",
     score: 0,
+    header_url:
+      "https://www.beano.com/wp-content/uploads/2024/01/1-14.png?strip=all&quality=86&w=887",
   },
   {
     id: 7,
@@ -83,6 +90,7 @@ module.exports = [
     release_date: "2020-03-10",
     latest_update: "2023-03-15",
     score: 83,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/1962663/header.jpg",
   },
   {
     id: 8,
@@ -95,6 +103,7 @@ module.exports = [
     release_date: "2015-11-10",
     latest_update: "2022-11-12",
     score: 40,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/377160/header.jpg",
   },
   {
     id: 9,
@@ -107,6 +116,7 @@ module.exports = [
     release_date: "2016-05-23",
     latest_update: "2023-04-04",
     score: 250,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/2357570/header.jpg",
   },
   {
     id: 10,
@@ -120,6 +130,7 @@ module.exports = [
     release_date: "2015-07-06",
     latest_update: "2023-05-17",
     score: 25,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/252950/header.jpg",
   },
   {
     id: 11,
@@ -132,6 +143,7 @@ module.exports = [
     release_date: "2021-09-30",
     latest_update: "2023-09-11",
     score: 0,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/1506830/header.jpg",
   },
   {
     id: 12,
@@ -144,6 +156,8 @@ module.exports = [
     release_date: "2009-10-27",
     latest_update: "2023-06-29",
     score: 150,
+    header_url:
+      "https://static.wikia.nocookie.net/leagueoflegends/images/7/7b/League_of_Legends_Cover.jpg/revision/latest/scale-to-width-down/1200?cb=20191018222445",
   },
   {
     id: 13,
@@ -157,6 +171,7 @@ module.exports = [
     release_date: "2020-03-20",
     latest_update: "2022-10-07",
     score: -325,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/782330/header.jpg",
   },
   {
     id: 14,
@@ -169,6 +184,7 @@ module.exports = [
     release_date: "2018-11-16",
     latest_update: "2023-07-24",
     score: -25,
+    header_url: "https://steamcdn-a.akamaihd.net/steam/apps/945360/header.jpg",
   },
   {
     id: 15,
@@ -183,5 +199,7 @@ module.exports = [
     release_date: "2004-11-23",
     latest_update: "2023-08-14",
     score: 200,
+    header_url:
+      "https://insider-gaming.com/wp-content/uploads/2023/11/world-of-warcraft-on-consoles.jpg",
   },
 ];

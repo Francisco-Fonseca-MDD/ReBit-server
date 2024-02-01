@@ -10,6 +10,7 @@ exports.up = function (knex) {
       table.date("release_date").notNullable();
       table.date("latest_update").notNullable();
       table.integer("score");
+      table.text("header_url");
     })
     .createTable("Tag-List", function (table) {
       table.increments("id").unsigned().primary();
