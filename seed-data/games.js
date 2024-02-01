@@ -9,7 +9,8 @@ module.exports = [
     about: "Experience a rich story and immersive gameplay.",
     price: 29.99,
     release_date: "2011-11-11",
-    latest_update: "2022-05-20",
+    latest_update: "2022-05-19",
+    score: 200,
   },
   {
     id: 2,
@@ -20,8 +21,9 @@ module.exports = [
     about:
       "Explore the American Wild West and make choices that shape your story.",
     price: 49.99,
-    release_date: "2018-10-26",
+    release_date: "2018-10-25",
     latest_update: "2023-02-15",
+    score: -100,
   },
   {
     id: 3,
@@ -30,8 +32,9 @@ module.exports = [
     detailed_description: "Play as Geralt of Rivia, a monster hunter for hire.",
     about: "Navigate a morally ambiguous world and make impactful choices.",
     price: 39.99,
-    release_date: "2015-05-19",
-    latest_update: "2022-08-10",
+    release_date: "2015-05-18",
+    latest_update: "2022-08-09",
+    score: 450,
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ module.exports = [
     price: 44.99,
     release_date: "2014-11-11",
     latest_update: "2023-01-05",
+    score: 200,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ module.exports = [
     price: 19.99,
     release_date: "2011-11-18",
     latest_update: "2022-12-30",
+    score: 333,
   },
   {
     id: 6,
@@ -61,9 +66,10 @@ module.exports = [
     detailed_description:
       "Fight to be the last one standing in a constantly changing environment.",
     about: "Build structures and outsmart your opponents to secure victory.",
-    price: 0.0,
-    release_date: "2017-07-25",
+    price: 0,
+    release_date: "2017-07-24",
     latest_update: "2024-01-20",
+    score: 0,
   },
   {
     id: 7,
@@ -73,9 +79,10 @@ module.exports = [
     detailed_description:
       "Drop into a massive map, gather resources, and eliminate enemies.",
     about: "Experience intense gunfights and strategic gameplay.",
-    price: 0.0,
+    price: 0,
     release_date: "2020-03-10",
     latest_update: "2023-03-15",
+    score: 83,
   },
   {
     id: 8,
@@ -87,6 +94,7 @@ module.exports = [
     price: 34.99,
     release_date: "2015-11-10",
     latest_update: "2022-11-12",
+    score: 40,
   },
   {
     id: 9,
@@ -96,8 +104,9 @@ module.exports = [
       "Choose from a diverse cast of heroes and engage in fast-paced battles.",
     about: "Work with your team to secure objectives and achieve victory.",
     price: 39.99,
-    release_date: "2016-05-24",
-    latest_update: "2023-04-05",
+    release_date: "2016-05-23",
+    latest_update: "2023-04-04",
+    score: 250,
   },
   {
     id: 10,
@@ -108,8 +117,9 @@ module.exports = [
       "Control rocket-powered cars and score goals in dynamic arenas.",
     about: "Compete in various game modes and customize your vehicles.",
     price: 19.99,
-    release_date: "2015-07-07",
-    latest_update: "2023-05-18",
+    release_date: "2015-07-06",
+    latest_update: "2023-05-17",
+    score: 25,
   },
   {
     id: 11,
@@ -119,8 +129,9 @@ module.exports = [
     detailed_description: "Experience realistic gameplay and stunning visuals.",
     about: "Play as your favorite teams and compete in various modes.",
     price: 59.99,
-    release_date: "2021-10-01",
-    latest_update: "2023-09-12",
+    release_date: "2021-09-30",
+    latest_update: "2023-09-11",
+    score: 0,
   },
   {
     id: 12,
@@ -129,9 +140,10 @@ module.exports = [
     detailed_description:
       "Choose from a roster of champions and engage in strategic team-based battles.",
     about: "Compete in ranked matches and rise through the ranks.",
-    price: 0.0,
+    price: 0,
     release_date: "2009-10-27",
-    latest_update: "2023-06-30",
+    latest_update: "2023-06-29",
+    score: 150,
   },
   {
     id: 13,
@@ -143,7 +155,8 @@ module.exports = [
     about: "Experience relentless combat and epic boss battles.",
     price: 49.99,
     release_date: "2020-03-20",
-    latest_update: "2022-10-08",
+    latest_update: "2022-10-07",
+    score: -325,
   },
   {
     id: 14,
@@ -154,7 +167,8 @@ module.exports = [
     about: "Complete tasks, identify impostors, and survive to win.",
     price: 4.99,
     release_date: "2018-11-16",
-    latest_update: "2023-07-25",
+    latest_update: "2023-07-24",
+    score: -25,
   },
   {
     id: 15,
@@ -167,6 +181,7 @@ module.exports = [
       "Join a guild, engage in player-vs-environment (PvE) and player-vs-player (PvP) content.",
     price: 49.99,
     release_date: "2004-11-23",
-    latest_update: "2023-08-15",
+    latest_update: "2023-08-14",
+    score: 200,
   },
 ];

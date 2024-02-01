@@ -3,9 +3,9 @@ exports.up = function (knex) {
     .createTable("Games", function (table) {
       table.increments("id").unsigned().primary();
       table.string("game", 255).notNullable();
-      table.string("short_description").notNullable();
-      table.string("detailed_description").notNullable();
-      table.string("about").notNullable();
+      table.text("short_description").notNullable();
+      table.text("detailed_description").notNullable();
+      table.text("about").notNullable();
       table.double("price", 8, 2).notNullable();
       table.date("release_date").notNullable();
       table.date("latest_update").notNullable();
