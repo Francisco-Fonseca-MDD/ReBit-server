@@ -76,8 +76,10 @@ const oneGame = async (req, res) => {
         "reviews.id",
         "reviews.review",
         "reviews.score",
-        "reviews.user_id"
+        "reviews.user_id",
+        "users.username"
       )
+      .join("users", "users.id", "reviews.user_id")
       .where({ game_id: req.params.id });
 
     const newReviews = await Promise.all(
@@ -88,8 +90,8 @@ const oneGame = async (req, res) => {
         let likes = 0;
         let dislikes = 0;
         reviewLikes.forEach((user) => {
-          if (user.like_dislike) likes++;
-          if (user.like_dislike) dislikes++;
+          if (Boolean(user.like_dislike)) likes++;
+          if (Boolean(user.like_dislike)) dislikes++;
         });
         return { ...review, likes: likes, dislikes: dislikes };
       })
@@ -125,4 +127,13 @@ const oneGame = async (req, res) => {
   }
 };
 
-module.exports = { allGames, oneGame };
+const allTags = async (_req, res) => {
+  try {
+    const tags = await knex("tag-list");
+    res.status(200).json(tags);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+};
+
+module.exports = { allGames, oneGame, allTags };

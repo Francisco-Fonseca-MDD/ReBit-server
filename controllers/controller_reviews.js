@@ -43,9 +43,4 @@ const deleteReview = async (req, res) => {
   res.sendStatus(204);
 };
 
-const temp = async (_req, res) => {
-  const games = await knex("games");
-  res.json(games);
-};
-
-module.exports = { post, updateLike, deleteReview, temp };
+module.exports = { post, updateLike, deleteReview };
