@@ -4,7 +4,7 @@ const utils = require("../utils");
 const post = async (req, res) => {
   const review = req.body.review;
   const userId = req.body.userId;
-  const gameId = req.params.id;
+  const gameId = req.body.gameId;
   const score = utils.analyse(review);
 
   const newReview = {
