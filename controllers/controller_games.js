@@ -91,7 +91,9 @@ const oneGame = async (req, res) => {
         let dislikes = 0;
         reviewLikes.forEach((user) => {
           if (Boolean(user.like_dislike)) likes++;
-          if (Boolean(user.like_dislike)) dislikes++;
+          else {
+            dislikes++;
+          }
         });
         return { ...review, likes: likes, dislikes: dislikes };
       })
