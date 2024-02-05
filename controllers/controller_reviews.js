@@ -14,7 +14,7 @@ const post = async (req, res) => {
     score: score,
   };
   await knex("reviews").insert(newReview);
-  utils.updateGamesScores();
+  await utils.updateGamesScores();
   res.json(newReview);
 };
 
